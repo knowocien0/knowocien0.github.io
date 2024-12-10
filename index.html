@@ -31,13 +31,18 @@
         div{
             background-color: blueviolet;
         }
+       
         main {
             display: grid;
             grid-template-columns: 1fr 3fr 2fr;
             grid-template-rows: 100px 100px 100px;
             grid-gap: 20px;
         }
-      
+       @media(max-width: 800px) {
+           main{
+               grid-template-columns: 1fr;
+           }
+       }
         @keyframes moveImage {
             0% {
                 transform: translate(0, 0); 
