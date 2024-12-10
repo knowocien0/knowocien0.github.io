@@ -6,45 +6,53 @@
     <title>Prosta Strona</title>
     <style>
         body {
-            margin: 0; /* Usuwamy marginesy, aby obrazek był dokładnie na ekranie */
-            overflow: hidden; /* Ukrywamy część, która wychodzi poza ekran */
+            margin: 0; anie 
+            overflow: hidden; 
         }
 
         img {
-            width: 200px; /* Początkowa szerokość obrazka */
-            height: 200px; /* Początkowa wysokość obrazka */
+            width: 200px;
+            height: 200px; 
             border-radius: 10px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
             display: block;
-            position: absolute; /* Umożliwia precyzyjne ustawienie pozycji */
-            animation: moveImage 5s infinite linear; /* Animacja przemieszczenia */
-            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; /* Płynne przejście przy najechaniu */
+            position: absolute; 
+            animation: moveImage 5s infinite linear; 
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease; 
         }
 
-        /* Zatrzymywanie animacji i powiększanie obrazka przy najechaniu */
+        
         img:hover {
-            transform: scale(2); /* Powiększa obrazek do 2x jego rozmiaru */
-            animation-play-state: paused; /* Zatrzymuje animację, gdy najedziesz na obrazek */
-            width: 50vw; /* Ustawia szerokość na połowę szerokości ekranu */
-            height: 50vh; /* Ustawia wysokość na połowę wysokości ekranu */
+            transform: scale(2); 
+            animation-play-state: paused; 
+            width: 50vw; 
+            height: 50vh; 
         }
-
-        /* Definicja animacji */
+        div{
+            background-color: blueviolet;
+        }
+        main {
+            display: grid;
+            grid-template-columns: 100px 120px 110px;
+            grid-template-rows: 100px 100px 100px;
+            grid-gap: 20px;
+        }
+      
         @keyframes moveImage {
             0% {
-                transform: translate(0, 0); /* Początkowa pozycja - lewy górny róg */
+                transform: translate(0, 0); 
             }
             25% {
-                transform: translate(calc(100vw - 200px), 0); /* Przemieszczanie na prawo */
+                transform: translate(calc(100vw - 200px), 0); 
             }
             50% {
-                transform: translate(calc(100vw - 200px), calc(100vh - 200px)); /* Przemieszczanie na dół w prawym dolnym rogu */
+                transform: translate(calc(100vw - 200px), calc(100vh - 200px));
             }
             75% {
-                transform: translate(0, calc(100vh - 200px)); /* Przemieszczanie na lewo w lewym dolnym rogu */
+                transform: translate(0, calc(100vh - 200px)); 
             }
             100% {
-                transform: translate(0, 0); /* Powrót do początkowej pozycji */
+                transform: translate(0, 0); 
             }
         }
     </style>
@@ -52,7 +60,24 @@
 <body>
     <h1>Witaj na mojej stronie!</h1>
     <p>Obrazek odbija się od krawędzi ekranu i powiększa po najechaniu myszką.</p>
-    
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        
+
+
+    </main>
     <img src="29339439_850973991754205_2178322552567365632_n.jpg" alt="Przykładowy obrazek" />
 </body>
 </html>
