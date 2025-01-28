@@ -1,39 +1,41 @@
-// Losowanie liczby od 1 do 100
-let liczba = Math.floor(Math.random() * 100) + 1;
-let próby = 10;  // Liczba prób gracza
+let secretNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 10;
 
-// Funkcja do sprawdzenia wprowadzonej liczby
-function sprawdz() {
-    // Pobranie liczby od użytkownika
-    const userGuess = parseInt(document.getElementById('guess').value);
-    const resultElement = document.getElementById('result');
-    const attemptsElement = document.getElementById('attempts');
+console.log("Witaj w grze! Musisz odgadnąć liczbę od 1 do 100.");
+console.log("Masz 10 prób.");
+
+function guessNumber() {
+    let userGuess = prompt("Wprowadź liczbę (1-100):");
+
+    if (userGuess === null) {
+        alert("Przerwałeś grę.");
+        return;
+    }
     
-    // Sprawdzenie, czy użytkownik wprowadził poprawną liczbę
+    userGuess = parseInt(userGuess);
+
     if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
-        resultElement.innerHTML = "Proszę wprowadzić liczbę z zakresu 1-100!";
+        alert("Proszę podać liczbę z zakresu 1-100.");
+        guessNumber(); 
         return;
     }
 
-    // Zmniejszanie liczby prób
-    próby--;
+    attempts--;
 
-    // Sprawdzenie, czy gracz zgadł liczbę
-    if (userGuess === liczba) {
-        resultElement.innerHTML = `Gratulacje! Zgadłeś liczbę ${liczba}! Wygrałeś!`;
-        attemptsElement.innerHTML = ""; // Ukrycie liczby prób po wygranej
-        return;
-    } else if (userGuess < liczba) {
-        resultElement.innerHTML = "Twoja liczba jest za mała. Spróbuj większą.";
-    } else {
-        resultElement.innerHTML = "Twoja liczba jest za duża. Spróbuj mniejszą.";
+    if (userGuess === secretNumber) {
+        alert("Gratulacje! Zgadłeś liczbę!");
+    } else if (userGuess < secretNumber) {
+        alert("Twoja liczba jest za mała. Masz " + attempts + " prób.");
+    } else if (userGuess > secretNumber) {
+        alert("Twoja liczba jest za duża. Masz " + attempts + " prób.");
     }
 
-    // Sprawdzanie liczby prób
-    if (próby > 0) {
-        attemptsElement.innerHTML = `Pozostałe próby: ${próby}`;
-    } else {
-        resultElement.innerHTML = `Niestety, przegrałeś! Prawidłowa liczba to ${liczba}.`;
-        attemptsElement.innerHTML = ""; // Ukrycie liczby prób po przegranej
+    if (attempts === 0 && userGuess !== secretNumber) {
+        alert("Niestety, przegrałeś! Prawidłowa liczba to: " + secretNumber);
+    } else if (userGuess !== secretNumber) {
+        guessNumber(); // Kolejna próba
     }
 }
+
+// Rozpoczęcie gry
+guessNumber();
